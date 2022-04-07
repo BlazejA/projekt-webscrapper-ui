@@ -1,13 +1,13 @@
-import { SmartphoneModel } from "@/models/smartphoneModel";
 import React from "react";
 import styles from "./styles.module.scss";
 import CardWrapper from "@/components/CardWrapper";
+import { LaptopModel } from "@/models/laptopModel";
 
 type Props = {
-  product: SmartphoneModel;
+  product: LaptopModel;
 };
 
-const SmartphoneCard = ({ product }: Props): JSX.Element => {
+const LaptopCard = ({ product }: Props): JSX.Element => {
   return (
     <CardWrapper
       product={product}
@@ -26,8 +26,8 @@ const SmartphoneCard = ({ product }: Props): JSX.Element => {
             <span>{product.details.ram}</span>
           </div>
           <div className={styles.descriptionWrapper}>
-            <span className={styles.title}>Aparat:</span>
-            <span>{product.details.camera}</span>
+            <span className={styles.title}>Procesor:</span>
+            <span>{product.details.procesor}</span>
           </div>
           <div className={styles.descriptionWrapper}>
             <span className={styles.title}>System operacyjny:</span>
@@ -39,4 +39,4 @@ const SmartphoneCard = ({ product }: Props): JSX.Element => {
   );
 };
 
-export default SmartphoneCard;
+export default LaptopCard;
