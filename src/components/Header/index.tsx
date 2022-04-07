@@ -1,15 +1,15 @@
 import React from "react";
-import logo from "../../assets/apple_logo.png";
 
+import logo from "@/assets/apple_logo.png";
 import styles from "./styles.module.scss";
 
 const Header = (): JSX.Element => {
   return (
     <div className={styles.header}>
       <div className={styles.logoWrapper}>
-        <img src={logo} alt="Logo" height={100} />
+        <img src={logo} alt="Logo" height={40} />
       </div>
-      <p>Compare Apple Products</p>
+      <p>Apple Products Comparison</p>
     </div>
   );
 };
