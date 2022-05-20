@@ -1,1 +1,1 @@
-export type CategoryModel = "smartphone" | "laptop" | "smartwatch";
+export type CategoryModel = 'smartphone' | 'laptop' | 'smartwatch';

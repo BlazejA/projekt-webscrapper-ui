@@ -1,7 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import logo from "@/assets/apple_logo.png";
-import styles from "./styles.module.scss";
+import logo from '@/assets/apple_logo.png';
+
+import styles from './styles.module.scss';
 
 const Header = (): JSX.Element => {
   return (

@@ -1,10 +1,10 @@
-import "@/App.scss";
+import '@/App.scss';
 
-import React from "react";
+import { ThemeProvider } from '@mui/material/styles';
+import React from 'react';
 
-import ProductListView from "@/views/ProductListView";
-import { ThemeProvider } from "@mui/material/styles";
-import { customTheme } from "@/styles/globalStyles";
+import { customTheme } from '@/styles/globalStyles';
+import ProductListView from '@/views/ProductListView';
 
 function App(): JSX.Element {
   return (

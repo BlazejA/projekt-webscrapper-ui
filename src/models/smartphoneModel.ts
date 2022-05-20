@@ -1,4 +1,4 @@
-import { ProductModel } from "./productModel";
+import { ProductModel } from './productModel';
 
 export interface SmartphoneModel extends ProductModel {
   details: {

@@ -1,9 +1,11 @@
-import React from "react";
-import { Send } from "@mui/icons-material";
-import styles from "./styles.module.scss";
-import { Button } from "@mui/material";
-import { ProductModel } from "@/models/productModel";
-import { getShopLogoPath } from "@/helpers/logo.helper";
+import { Send } from '@mui/icons-material';
+import { Button } from '@mui/material';
+import React from 'react';
+
+import { getShopLogoPath } from '@/helpers/logo.helper';
+import { ProductModel } from '@/models/productModel';
+
+import styles from './styles.module.scss';
 
 type Props = {
   product: ProductModel;
@@ -22,22 +24,15 @@ const CardWrapper = ({ product, details }: Props): JSX.Element => {
       </div>
       <div className={styles.rightSide}>
         <p>{product.actual_price}</p>
-        {product.old_price && (
-          <span className={styles.oldPrice}>{product.old_price}</span>
-        )}
-        <img
-          src={getShopLogoPath(product.shop)}
-          alt={product.shop}
-          height={30}
-        />
+        {product.old_price && <span className={styles.oldPrice}>{product.old_price}</span>}
+        <img src={getShopLogoPath(product.shop)} alt={product.shop} height={30} />
         <Button
           variant="contained"
           size="small"
           target="_blank"
           href={product.link}
           endIcon={<Send />}
-          sx={{ marginTop: "auto" }}
-        >
+          sx={{ marginTop: 'auto' }}>
           Przejdź do sklepu
         </Button>
       </div>

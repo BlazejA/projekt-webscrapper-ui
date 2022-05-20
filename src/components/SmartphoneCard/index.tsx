@@ -1,7 +1,9 @@
-import { SmartphoneModel } from "@/models/smartphoneModel";
-import React from "react";
-import styles from "./styles.module.scss";
-import CardWrapper from "@/components/CardWrapper";
+import React from 'react';
+
+import CardWrapper from '@/components/CardWrapper';
+import { SmartphoneModel } from '@/models/smartphoneModel';
+
+import styles from './styles.module.scss';
 
 type Props = {
   product: SmartphoneModel;
