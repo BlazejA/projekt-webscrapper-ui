@@ -1,0 +1,23 @@
+.advancedFilters {
+  padding: 20px 20px 20px 20px;
+  background-color: white;
+  min-width: 1000px;
+
+  > p {
+    margin-bottom: 5px;
+  }
+}
+
+.priceWrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 300px;
+}
+
+.footer {
+  display: flex;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  justify-content: flex-end;
+}

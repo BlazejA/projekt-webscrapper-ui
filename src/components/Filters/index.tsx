@@ -1,49 +1,33 @@
-import { Tune } from '@mui/icons-material';
+import { Close, Tune } from '@mui/icons-material';
 import {
+  Dialog,
+  DialogContent,
+  DialogTitle,
   FormControl,
   IconButton,
   InputLabel,
   MenuItem,
   Select,
-  Slider,
   TextField,
 } from '@mui/material';
 import React, { useState } from 'react';
 
+import { ShopNameModel } from '@/models/shopNameModel';
 import { useTypedDispatch, useTypedSelector } from '@/store';
 import {
-  updateCategoryFilter,
   updateNameQueryFilter,
-  updatePricesFilter,
   updateShopNamesFilter,
+  updateSortingType,
 } from '@/store/filters.slice';
 import { shopNamesFilters } from '@/utils/filters';
 
+import AdvancedFilters from './components/AdvancedFilters';
 import styles from './styles.module.scss';
 
 const Filters = (): JSX.Element => {
   const dispatch = useTypedDispatch();
-  const { shopNames, nameQuery, category, prices } = useTypedSelector(state => state.filters);
+  const { shopNames, nameQuery, sortingType } = useTypedSelector(state => state.filters);
   const [showAdvancedFilters, setShowAdvancedFilters] = useState(false);
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleShopNamesChange = (event: any): void => {
-    dispatch(updateShopNamesFilter(event.target.value));
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleNameQueryChange = (event: any): void => {
-    dispatch(updateNameQueryFilter(event.target.value));
-  };
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const handleCategoryChange = (event: any): void => {
-    dispatch(updateCategoryFilter(event.target.value));
-  };
-
-  const handlePricesChange = (event: Event, newValue: number | number[]): void => {
-    dispatch(updatePricesFilter(newValue as number[]));
-  };
 
   return (
     <div className={styles.container}>
@@ -57,7 +41,9 @@ const Filters = (): JSX.Element => {
               multiple
               value={shopNames}
               label="Sklep"
-              onChange={handleShopNamesChange}
+              onChange={event =>
+                dispatch(updateShopNamesFilter(event.target.value as ShopNameModel[]))
+              }
               sx={{ width: '300px' }}>
               {shopNamesFilters.map(shopNamesFilter => (
                 <MenuItem key={shopNamesFilter.value} value={shopNamesFilter.value}>
@@ -72,44 +58,50 @@ const Filters = (): JSX.Element => {
             variant="outlined"
             size="small"
             sx={{ width: '400px' }}
-            onChange={handleNameQueryChange}
+            onChange={event => dispatch(updateNameQueryFilter(event.target.value))}
           />
         </div>
-        <IconButton
-          color={showAdvancedFilters ? 'secondary' : 'primary'}
-          onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}>
-          <Tune />
-        </IconButton>
-      </div>
-      {showAdvancedFilters && (
-        <div className={styles.advancedFilters}>
-          <div>
-            <Slider
-              getAriaLabel={() => 'Temperature range'}
-              defaultValue={prices}
-              onChange={handlePricesChange}
-              valueLabelDisplay="auto"
-              min={prices[0]}
-              max={prices[1]}
-              // getAriaValueText={valuetext}
-            />
-          </div>
+        <div className={styles.right}>
           <FormControl size="small">
-            <InputLabel id="demo-select-small">Kategoria</InputLabel>
+            <InputLabel id="demo-select-small">Sortuj</InputLabel>
             <Select
               labelId="demo-select-small"
               id="demo-select-small"
-              value={category}
-              onChange={handleCategoryChange}
-              label="Kategoria"
-              sx={{ width: '300px' }}>
+              value={sortingType}
+              label="Sortuj"
+              onChange={event => dispatch(updateSortingType(event.target.value))}
+              sx={{ width: '150px' }}>
               <MenuItem value="">Brak</MenuItem>
-              <MenuItem value="smartphone">Telefon</MenuItem>
-              <MenuItem value="laptop">Laptop</MenuItem>
+              <MenuItem value="asc">Cena rosnąco</MenuItem>
+              <MenuItem value="desc">Cena malejąco</MenuItem>
             </Select>
           </FormControl>
+          <IconButton
+            color={showAdvancedFilters ? 'secondary' : 'primary'}
+            onClick={() => setShowAdvancedFilters(!showAdvancedFilters)}>
+            <Tune />
+          </IconButton>
         </div>
-      )}
+      </div>
+
+      <Dialog
+        open={showAdvancedFilters}
+        onClose={() => setShowAdvancedFilters(false)}
+        maxWidth="xl"
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description">
+        <DialogTitle id="alert-dialog-title">
+          <div className={styles.dialogTitleWrapper}>
+            <span>Zaawansowane filtry</span>
+            <IconButton color="primary" onClick={() => setShowAdvancedFilters(false)}>
+              <Close />
+            </IconButton>
+          </div>
+        </DialogTitle>
+        <DialogContent sx={{ paddingBottom: 'unset' }}>
+          <AdvancedFilters />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

@@ -2,8 +2,8 @@ export const products = [
   {
     id: 1,
     name: 'Apple iPhone 11 64GB (czarny)',
-    actual_price: '2499zł',
-    old_price: '2549zł',
+    actual_price: '2499',
+    old_price: '2549',
     category: 'smartphone',
     shop: 'media_markt',
     details: {
@@ -19,10 +19,10 @@ export const products = [
   {
     id: 2,
     name: 'Smartfon APPLE iPhone 13 Pro 128GB Złoty MLVC3PM/A',
-    actual_price: '5178zł',
+    actual_price: '5178',
     old_price: '',
     category: 'smartphone',
-    shop: 'media_expert',
+    shop: 'cortland',
     details: {
       screen: '6.1 (1170 x 2532, Dotykowy, OLED, Super Retina XDR)',
       internal_storage: '128 GB',
@@ -36,8 +36,8 @@ export const products = [
   {
     id: 3,
     name: 'Laptop APPLE MacBook Air 13 M1/8GB/256GB SSD/INT/macOS Gwiezdna szarość MGN63ZE/A',
-    actual_price: '4299zł',
-    old_price: '4529zł',
+    actual_price: '4299',
+    old_price: '4529',
     category: 'laptop',
     shop: 'media_markt',
     details: {
@@ -53,8 +53,8 @@ export const products = [
   {
     id: 4,
     name: 'Apple iPhone 11 64GB (czarny)',
-    actual_price: '2499zł',
-    old_price: '2549zł',
+    actual_price: '2499',
+    old_price: '2549',
     category: 'smartphone',
     shop: 'media_markt',
     details: {
@@ -70,10 +70,10 @@ export const products = [
   {
     id: 5,
     name: 'Laptop APPLE MacBook Air 13 M1/8GB/256GB SSD/INT/macOS Gwiezdna szarość MGN63ZE/A',
-    actual_price: '4299zł',
-    old_price: '4529zł',
+    actual_price: '4299',
+    old_price: '4529',
     category: 'laptop',
-    shop: 'media_markt',
+    shop: 'rtv_euro_agd',
     details: {
       screen: '13.3 (2560 x 1600, IPS)',
       internal_storage: '256 GB',
@@ -87,8 +87,8 @@ export const products = [
   {
     id: 6,
     name: 'Apple iPhone 11 64GB (czarny)',
-    actual_price: '2499zł',
-    old_price: '2549zł',
+    actual_price: '2499',
+    old_price: '2549',
     category: 'smartphone',
     shop: 'media_markt',
     details: {
@@ -104,10 +104,10 @@ export const products = [
   {
     id: 7,
     name: 'Smartfon APPLE iPhone 13 Pro 128GB Złoty MLVC3PM/A',
-    actual_price: '5178zł',
+    actual_price: '5178',
     old_price: '',
     category: 'smartphone',
-    shop: 'media_markt',
+    shop: 'rtv_euro_agd',
     details: {
       screen: '6.1 (1170 x 2532, Dotykowy, OLED, Super Retina XDR)',
       internal_storage: '128 GB',

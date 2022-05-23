@@ -7,21 +7,25 @@ import { SmartphoneFiltersModel } from '@/models/smartphoneFiltersModel';
 interface InitialState {
   shopNames: ShopNameModel[];
   nameQuery: string;
-  minPrice: number | null;
-  maxPrice: number | null;
+  price: {
+    min: string;
+    max: string;
+  };
   category: string;
+  sortingType: string;
   smartphoneAdditionalFilters: SmartphoneFiltersModel;
-  prices: number[];
 }
 
 const initialState: InitialState = {
   shopNames: initialShopNameFilters,
   nameQuery: '',
-  minPrice: null,
-  maxPrice: null,
+  price: {
+    min: '',
+    max: '',
+  },
   category: '',
+  sortingType: '',
   smartphoneAdditionalFilters: initialSmartphoneFilters,
-  prices: [0, 0],
 };
 
 const filtersSlice = createSlice({
@@ -34,14 +38,17 @@ const filtersSlice = createSlice({
     updateNameQueryFilter(state, action: PayloadAction<string>) {
       state.nameQuery = action.payload || '';
     },
+    updatePriceFilter(state, action: PayloadAction<{ min: string; max: string }>) {
+      state.price = action.payload || '';
+    },
     updateCategoryFilter(state, action: PayloadAction<string>) {
       state.category = action.payload || '';
     },
+    updateSortingType(state, action: PayloadAction<string>) {
+      state.sortingType = action.payload || '';
+    },
     updateSmartphoneAdditionalFilters(state, action: PayloadAction<SmartphoneFiltersModel>) {
       state.smartphoneAdditionalFilters = action.payload || null;
-    },
-    updatePricesFilter(state, action: PayloadAction<number[]>) {
-      state.prices = action.payload;
     },
   },
 });
@@ -50,7 +57,8 @@ export const {
   updateShopNamesFilter,
   updateNameQueryFilter,
   updateCategoryFilter,
+  updatePriceFilter,
   updateSmartphoneAdditionalFilters,
-  updatePricesFilter,
+  updateSortingType,
 } = filtersSlice.actions;
 export default filtersSlice.reducer;

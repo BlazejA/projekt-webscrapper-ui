@@ -23,18 +23,23 @@ const CardWrapper = ({ product, details }: Props): JSX.Element => {
         <div className={styles.detailsWrapper}>{details}</div>
       </div>
       <div className={styles.rightSide}>
-        <p>{product.actual_price}</p>
-        {product.old_price && <span className={styles.oldPrice}>{product.old_price}</span>}
-        <img src={getShopLogoPath(product.shop)} alt={product.shop} height={30} />
-        <Button
-          variant="contained"
-          size="small"
-          target="_blank"
-          href={product.link}
-          endIcon={<Send />}
-          sx={{ marginTop: 'auto' }}>
-          Przejdź do sklepu
-        </Button>
+        <div className={styles.priceWrapper}>
+          <p>{product.actual_price}zł</p>
+          {product.old_price && <span className={styles.oldPrice}>{product.old_price}zł</span>}
+        </div>
+        <div className={styles.buttonWrapper}>
+          <img src={getShopLogoPath(product.shop)} alt={product.shop} height={25} />
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            target="_blank"
+            href={product.link}
+            endIcon={<Send />}
+            sx={{ marginTop: 'auto' }}>
+            <strong>Idź do sklepu</strong>
+          </Button>
+        </div>
       </div>
     </div>
   );
