@@ -1,6 +1,9 @@
 {
   "name": "webscrapper-ui",
   "version": "0.0.0",
+  "engines": {
+    "node": "17.9.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
