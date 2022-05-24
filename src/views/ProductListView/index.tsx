@@ -18,7 +18,9 @@ const ProductListView = (): JSX.Element => {
   const { nameQuery, shopNames, category, discountOnly } = useTypedSelector(state => state.filters);
 
   const { data: productsFromBackend } = useGetProductsQuery();
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [productsListForActivePage, setProductsListForActivePage] = useState<any[]>([]);
   const [activePage, setActivePage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
@@ -33,6 +35,7 @@ const ProductListView = (): JSX.Element => {
       // Filtering by query name
       if (nameQuery) {
         setFilteredProducts([
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           ...productsFromBackend?._items.filter((product: any) =>
             product.name.toLowerCase().includes(nameQuery)
           ),
@@ -44,17 +47,20 @@ const ProductListView = (): JSX.Element => {
       let filteredList = [...productsFromBackend?._items];
 
       // Shop names filter
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       filteredList = filteredList.filter((product: any) =>
         shopNames.includes(product.shop as ShopNameModel)
       );
 
       // Only discount filter
       if (discountOnly) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         filteredList = filteredList.filter((product: any) => product.old_price !== '');
       }
 
       // Category filter
       if (category) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         filteredList = filteredList.filter((product: any) => product.category === category);
       }
 
