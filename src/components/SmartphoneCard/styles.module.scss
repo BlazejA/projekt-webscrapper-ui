@@ -1,0 +1,12 @@
+.descriptionWrapper {
+  display: flex;
+  gap: 5px;
+
+  > span {
+    font-size: 14px;
+  }
+
+  .title {
+    opacity: 0.48;
+  }
+}

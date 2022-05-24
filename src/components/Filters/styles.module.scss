@@ -1,0 +1,21 @@
+.container {
+  position: relative;
+}
+
+.filters {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+  flex-wrap: wrap;
+}
+
+.left, .right {
+  display: flex;
+  gap: 10px;
+}
+
+.dialogTitleWrapper {
+  display: flex;
+  justify-content: space-between;
+}

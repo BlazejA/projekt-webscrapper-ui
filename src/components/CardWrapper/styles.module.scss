@@ -1,0 +1,72 @@
+.card {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  width: 200px;
+
+  > img {
+    height: fit-content;
+    max-height: 150px;
+    max-width: 100%;
+  }
+}
+
+.leftSide {
+  padding-top: 10px;
+  padding-left: 10px;
+
+  > p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+.rightSide {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: auto;
+  align-items: flex-end;
+
+
+  .priceWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    > img {
+      margin-top: auto;
+    }
+  
+    > p {
+      font-size: 26px;
+      margin-bottom: 5px;
+    }
+  
+    .oldPrice {
+      text-decoration: line-through;
+      color: grey;
+    }
+  }
+
+  .buttonWrapper {
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+}
+
+.detailsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
