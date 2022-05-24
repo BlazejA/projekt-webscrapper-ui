@@ -15,9 +15,7 @@ import { useTypedSelector } from '@/store';
 import styles from './styles.module.scss';
 
 const ProductListView = (): JSX.Element => {
-  const { nameQuery, shopNames, price, category, sortingType, discountOnly } = useTypedSelector(
-    state => state.filters
-  );
+  const { nameQuery, shopNames, category, discountOnly } = useTypedSelector(state => state.filters);
 
   const { data: productsFromBackend } = useGetProductsQuery();
   const [filteredProducts, setFilteredProducts] = useState<any[]>([]);
