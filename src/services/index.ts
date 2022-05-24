@@ -1,3 +1,7 @@
-export const apiReducers = {};
+import { productsApi } from './products.service';
 
-export const apiMiddlewares = [];
+export const apiReducers = {
+  [productsApi.reducerPath]: productsApi.reducer,
+};
+
+export const apiMiddlewares = [productsApi.middleware];

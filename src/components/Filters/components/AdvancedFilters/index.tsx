@@ -1,6 +1,9 @@
 import {
   Button,
+  Checkbox,
   FormControl,
+  FormControlLabel,
+  FormGroup,
   InputAdornment,
   InputLabel,
   MenuItem,
@@ -10,17 +13,22 @@ import {
 import React from 'react';
 
 import { useTypedDispatch, useTypedSelector } from '@/store';
-import { updateCategoryFilter, updatePriceFilter } from '@/store/filters.slice';
+import {
+  updateCategoryFilter,
+  updateDiscountOnlyFilter,
+  updatePriceFilter,
+} from '@/store/filters.slice';
 
 import styles from './styles.module.scss';
 
 const AdvancedFilters = (): JSX.Element => {
   const dispatch = useTypedDispatch();
-  const { category, price } = useTypedSelector(state => state.filters);
+  const { category, price, discountOnly } = useTypedSelector(state => state.filters);
 
   const clearAdvancedFilters = (): void => {
     dispatch(updateCategoryFilter(''));
     dispatch(updatePriceFilter({ min: '', max: '' }));
+    dispatch(updateDiscountOnlyFilter(false));
   };
 
   return (
@@ -66,10 +74,21 @@ const AdvancedFilters = (): JSX.Element => {
             onChange={e => dispatch(updatePriceFilter({ ...price, max: e.target.value }))}
           />
         </div>
+        <FormGroup sx={{ width: 'fit-content' }}>
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={discountOnly}
+                onChange={e => dispatch(updateDiscountOnlyFilter(e.target.checked))}
+              />
+            }
+            label="Wyświetl tylko produkty w promocji"
+          />
+        </FormGroup>
       </div>
       <div className={styles.footer}>
         <Button onClick={clearAdvancedFilters} variant="contained">
-          Wyczyść
+          <strong>Wyczyść</strong>
         </Button>
       </div>
     </>

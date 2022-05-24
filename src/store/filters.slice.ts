@@ -12,6 +12,7 @@ interface InitialState {
     max: string;
   };
   category: string;
+  discountOnly: boolean;
   sortingType: string;
   smartphoneAdditionalFilters: SmartphoneFiltersModel;
 }
@@ -24,6 +25,7 @@ const initialState: InitialState = {
     max: '',
   },
   category: '',
+  discountOnly: false,
   sortingType: '',
   smartphoneAdditionalFilters: initialSmartphoneFilters,
 };
@@ -40,6 +42,9 @@ const filtersSlice = createSlice({
     },
     updatePriceFilter(state, action: PayloadAction<{ min: string; max: string }>) {
       state.price = action.payload || '';
+    },
+    updateDiscountOnlyFilter(state, action: PayloadAction<boolean>) {
+      state.discountOnly = action.payload || false;
     },
     updateCategoryFilter(state, action: PayloadAction<string>) {
       state.category = action.payload || '';
@@ -60,5 +65,6 @@ export const {
   updatePriceFilter,
   updateSmartphoneAdditionalFilters,
   updateSortingType,
+  updateDiscountOnlyFilter,
 } = filtersSlice.actions;
 export default filtersSlice.reducer;

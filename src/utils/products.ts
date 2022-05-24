@@ -104,7 +104,7 @@ export const products = [
   {
     id: 7,
     name: 'Smartfon APPLE iPhone 13 Pro 128GB Złoty MLVC3PM/A',
-    actual_price: '5178',
+    actualPrice: '5178',
     old_price: '',
     category: 'smartphone',
     shop: 'rtv_euro_agd',

@@ -58,7 +58,7 @@ const Filters = (): JSX.Element => {
             variant="outlined"
             size="small"
             sx={{ width: '400px' }}
-            onChange={event => dispatch(updateNameQueryFilter(event.target.value))}
+            onChange={event => dispatch(updateNameQueryFilter(event.target.value.toLowerCase()))}
           />
         </div>
         <div className={styles.right}>

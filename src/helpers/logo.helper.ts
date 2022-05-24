@@ -7,7 +7,7 @@ export const getShopLogoPath = (shopName: ShopNameModel): string => {
   if (shopName === 'media_markt') {
     return mediaMarktLogo;
   }
-  if (shopName === 'rtv_euro_agd') {
+  if (shopName === 'RTVeuroAGD') {
     return rtvEuroAgdLogo;
   }
   if (shopName === 'cortland') {

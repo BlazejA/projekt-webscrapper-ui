@@ -1,7 +1,7 @@
 import { ShopNameModel } from '@/models/shopNameModel';
 import { SmartphoneFiltersModel } from '@/models/smartphoneFiltersModel';
 
-export const initialShopNameFilters: ShopNameModel[] = ['rtv_euro_agd', 'cortland', 'media_markt'];
+export const initialShopNameFilters: ShopNameModel[] = ['RTVeuroAGD', 'cortland', 'media_markt'];
 
 export const initialSmartphoneFilters: SmartphoneFiltersModel = {
   ram: {
