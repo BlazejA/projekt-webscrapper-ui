@@ -24,8 +24,8 @@ const CardWrapper = ({ product, details }: Props): JSX.Element => {
       </div>
       <div className={styles.rightSide}>
         <div className={styles.priceWrapper}>
-          <p>{product.actual_price}zł</p>
-          {product.old_price && <span className={styles.oldPrice}>{product.old_price}zł</span>}
+          <p>{product.actualPrice}zł</p>
+          {product.oldPrice && <span className={styles.oldPrice}>{product.oldPrice}zł</span>}
         </div>
         <div className={styles.buttonWrapper}>
           <img src={getShopLogoPath(product.shop)} alt={product.shop} height={25} />
@@ -35,6 +35,7 @@ const CardWrapper = ({ product, details }: Props): JSX.Element => {
             size="small"
             target="_blank"
             href={product.link}
+            disabled={!product.link}
             endIcon={<Send />}
             sx={{ marginTop: 'auto' }}>
             <strong>Idź do sklepu</strong>

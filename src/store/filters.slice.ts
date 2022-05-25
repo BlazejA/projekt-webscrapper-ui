@@ -1,8 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { initialShopNameFilters, initialSmartphoneFilters } from '@/helpers/filter.helper';
+import { initialShopNameFilters } from '@/helpers/filter.helper';
 import { ShopNameModel } from '@/models/shopNameModel';
-import { SmartphoneFiltersModel } from '@/models/smartphoneFiltersModel';
 
 interface InitialState {
   shopNames: ShopNameModel[];
@@ -14,7 +13,6 @@ interface InitialState {
   category: string;
   discountOnly: boolean;
   sortingType: string;
-  smartphoneAdditionalFilters: SmartphoneFiltersModel;
 }
 
 const initialState: InitialState = {
@@ -27,7 +25,6 @@ const initialState: InitialState = {
   category: '',
   discountOnly: false,
   sortingType: '',
-  smartphoneAdditionalFilters: initialSmartphoneFilters,
 };
 
 const filtersSlice = createSlice({
@@ -52,9 +49,6 @@ const filtersSlice = createSlice({
     updateSortingType(state, action: PayloadAction<string>) {
       state.sortingType = action.payload || '';
     },
-    updateSmartphoneAdditionalFilters(state, action: PayloadAction<SmartphoneFiltersModel>) {
-      state.smartphoneAdditionalFilters = action.payload || null;
-    },
   },
 });
 
@@ -63,7 +57,6 @@ export const {
   updateNameQueryFilter,
   updateCategoryFilter,
   updatePriceFilter,
-  updateSmartphoneAdditionalFilters,
   updateSortingType,
   updateDiscountOnlyFilter,
 } = filtersSlice.actions;

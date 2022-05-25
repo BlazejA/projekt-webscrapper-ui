@@ -7,6 +7,7 @@ import LaptopCard from '@/components/LaptopCard';
 import NoResult from '@/components/NoResult';
 import SmartphoneCard from '@/components/SmartphoneCard';
 import { LaptopModel } from '@/models/laptopModel';
+import { ProductModel } from '@/models/productModel';
 import { ShopNameModel } from '@/models/shopNameModel';
 import { SmartphoneModel } from '@/models/smartphoneModel';
 import { useGetProductsQuery } from '@/services/products.service';
@@ -15,7 +16,9 @@ import { useTypedSelector } from '@/store';
 import styles from './styles.module.scss';
 
 const ProductListView = (): JSX.Element => {
-  const { nameQuery, shopNames, category, discountOnly } = useTypedSelector(state => state.filters);
+  const { nameQuery, shopNames, category, discountOnly, sortingType, price } = useTypedSelector(
+    state => state.filters
+  );
 
   const { data: productsFromBackend } = useGetProductsQuery();
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -36,7 +39,7 @@ const ProductListView = (): JSX.Element => {
       if (nameQuery) {
         setFilteredProducts([
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          ...productsFromBackend?._items.filter((product: any) =>
+          ...productsFromBackend.filter((product: any) =>
             product.name.toLowerCase().includes(nameQuery)
           ),
         ]);
@@ -44,45 +47,44 @@ const ProductListView = (): JSX.Element => {
         return;
       }
       setActivePage(1);
-      let filteredList = [...productsFromBackend?._items];
+      let filteredList = [...productsFromBackend];
 
       // Shop names filter
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      filteredList = filteredList.filter((product: any) =>
+      filteredList = filteredList.filter((product: ProductModel) =>
         shopNames.includes(product.shop as ShopNameModel)
       );
 
       // Only discount filter
       if (discountOnly) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        filteredList = filteredList.filter((product: any) => product.old_price !== '');
+        filteredList = filteredList.filter((product: ProductModel) => product.oldPrice !== '');
       }
 
       // Category filter
       if (category) {
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        filteredList = filteredList.filter((product: any) => product.category === category);
+        filteredList = filteredList.filter(
+          (product: ProductModel) => product.category === category
+        );
       }
 
-      // // Sorting by actual price
-      // if (sortingType) {
-      //   filteredList = filteredList.sort((a, b) =>
-      //     sortingType === 'asc'
-      //       ? parseFloat(a.actual_price) - parseFloat(b.actual_price)
-      //       : parseFloat(b.actual_price) - parseFloat(a.actual_price)
-      //   );
-      // }
+      // Sorting by actual price
+      if (sortingType) {
+        filteredList = filteredList.sort((a, b) =>
+          sortingType === 'asc'
+            ? parseFloat(a.actualPrice) - parseFloat(b.actualPrice)
+            : parseFloat(b.actualPrice) - parseFloat(a.actualPrice)
+        );
+      }
 
-      // // Price filter
-      // filteredList = products.filter(
-      //   item =>
-      //     parseFloat(item.actual_price) >= (parseFloat(price.min) || 0) &&
-      //     parseFloat(item.actual_price) <= (parseFloat(price.max) || 100000000000)
-      // );
+      // Price filter
+      filteredList = filteredList.filter(
+        product =>
+          parseFloat(product.actualPrice) >= (parseFloat(price.min) || 0) &&
+          parseFloat(product.actualPrice) <= (parseFloat(price.max) || 100000000000)
+      );
 
       setFilteredProducts(filteredList);
     }
-  }, [nameQuery, category, shopNames, productsFromBackend, discountOnly]);
+  }, [nameQuery, category, shopNames, productsFromBackend, discountOnly, sortingType, price]);
 
   useEffect(() => {
     setProductsListForActivePage(
@@ -106,11 +108,11 @@ const ProductListView = (): JSX.Element => {
             <div className={styles.productList}>
               {productsListForActivePage.map(product => (
                 <>
-                  {product.category === 'smartfon' && (
-                    <SmartphoneCard key={product.id} product={product as SmartphoneModel} />
+                  {product.category === 'smartphone' && (
+                    <SmartphoneCard key={product._id.$oid} product={product as SmartphoneModel} />
                   )}
                   {product.category === 'laptop' && (
-                    <LaptopCard key={product.id} product={product as LaptopModel} />
+                    <LaptopCard key={product._id.$oid} product={product as LaptopModel} />
                   )}
                 </>
               ))}

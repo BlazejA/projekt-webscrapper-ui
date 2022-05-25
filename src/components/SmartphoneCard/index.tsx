@@ -17,23 +17,27 @@ const SmartphoneCard = ({ product }: Props): JSX.Element => {
         <div className={styles.detailsWrapper}>
           <div className={styles.descriptionWrapper}>
             <span className={styles.title}>Wyświetlacz:</span>
-            <span>{product.details.screen}</span>
+            <span>{product.details.screen || '-'}</span>
           </div>
+
           <div className={styles.descriptionWrapper}>
             <span className={styles.title}>Pamięć wewnętrzna:</span>
-            <span>{product.details.internal_storage}</span>
+            <span>{product.details.internalStorage || '-'}</span>
           </div>
+
           <div className={styles.descriptionWrapper}>
             <span className={styles.title}>Pamięć RAM:</span>
-            <span>{product.details.ram}</span>
+            <span>{product.details.ram || '-'}</span>
           </div>
+
           <div className={styles.descriptionWrapper}>
             <span className={styles.title}>Aparat:</span>
-            <span>{product.details.camera}</span>
+            <span>{product.details.camera || '-'}</span>
           </div>
+
           <div className={styles.descriptionWrapper}>
             <span className={styles.title}>System operacyjny:</span>
-            <span>{product.details.system}</span>
+            <span>{product.details.system || '-'}</span>
           </div>
         </div>
       }

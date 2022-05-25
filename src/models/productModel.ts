@@ -4,8 +4,8 @@ import { ShopNameModel } from './shopNameModel';
 export interface ProductModel {
   id: number;
   name: string;
-  actual_price: string;
-  old_price: string;
+  actualPrice: string;
+  oldPrice: string;
   category: CategoryModel;
   shop: ShopNameModel;
   img: string;

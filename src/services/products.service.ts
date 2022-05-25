@@ -6,7 +6,7 @@ export const productsApi = createApi({
   endpoints: build => ({
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     getProducts: build.query<any, void>({
-      query: () => '/euro',
+      query: () => '/all',
     }),
   }),
 });
