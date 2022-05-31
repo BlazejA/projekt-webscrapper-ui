@@ -6,14 +6,15 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .ts --ext .tsx --ignore-path .gitignore --max-warnings 0 src",
     "lint:fix": "eslint --fix --ext .ts --ext .tsx --ignore-path .gitignore src",
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check ./src",
     "format": "prettier --write ./src",
-    "pre-commit": "npm run format && npm run check-format && npm run lint:fix && npm run lint && npm run check-types && npm run build"
+    "pre-commit": "npm run format && npm run check-format && npm run lint:fix && npm run lint && npm run check-types && npm run build",
+    "start": "vite"
   },
   "dependencies": {
     "@emotion/react": "^11.9.0",
